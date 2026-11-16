@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>DonorHub – Find a verified blood donor</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&family=Noto+Nastaliq+Urdu&display=swap">
+<link rel="stylesheet" href="style.css">
+<link rel="icon" href="favicon.svg" type="image/svg+xml"><meta name="description" content="DonorHub helps families in Pakistan find verified, eligible blood donors and blood bank stock in minutes."><meta property="og:title" content="DonorHub – Find a verified blood donor"><meta property="og:description" content="Verified donors, compatible matching and live blood bank stock. Free for families."></head>
+<body>
+<div class="msg" style="margin:0;border-radius:0;border-width:0 0 1px;text-align:center;font-size:.9rem">Demo version: runs in your browser with sample data. The full version has a real Node.js + SQLite backend (see the source code on GitHub).</div>
+<header><div class="wrap hd">
+<div class="logo"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 3C12 9.5 7 14 7 19.5a9 9 0 0 0 18 0C25 14 20 9.5 16 3z" fill="var(--red)"/><circle cx="16" cy="19" r="2.6" fill="#fff"/><path d="M16 19l-4.5 2.5M16 19l4.5 2.5M16 19v-5" stroke="#fff" stroke-width="1.3"/></svg>DonorHub</div>
+<nav role="tablist" id="nav">
+<button role="tab" data-t="find" data-i="nFind"></button>
+<button role="tab" data-t="req" data-i="nReq"></button>
+<button role="tab" data-t="reg" data-i="nReg"></button>
+<button role="tab" data-t="quiz" data-i="nQuiz"></button>
+<button role="tab" data-t="banks" data-i="nBanks"></button>
+</nav>
+<button class="lang" id="lang">اردو</button>
+</div></header>
+
+<main class="wrap">
+<section id="find">
+<div class="hero">
+<h1 data-i="h1"></h1>
+<p class="sub" data-i="sub"></p>
+<div class="groups" id="tiles" role="group"></div>
+<div class="bar">
+<div><label for="area" data-i="area"></label><select id="area"><option value="" data-i="allAreas"></option></select></div>
+<button class="btn" id="go" data-i="search"></button>
+</div>
+<div class="list" id="res" aria-live="polite"></div>
+</div>
+<div class="band" id="stats"></div>
+<h2 class="sec" data-i="howT"></h2>
+<ol class="steps"><li><b data-i="s1t"></b><span data-i="s1d"></span></li><li><b data-i="s2t"></b><span data-i="s2d"></span></li><li><b data-i="s3t"></b><span data-i="s3d"></span></li></ol>
+<h2 class="sec" data-i="whyT"></h2>
+<div class="tw"><table class="cmp"><tr><th></th><th>DonorHub</th><th data-i="grpT"></th></tr>
+<tr><td data-i="r1"></td><td class="y">✓ <span data-i="yes"></span></td><td class="n">✗ <span data-i="no"></span></td></tr>
+<tr><td data-i="r2"></td><td class="y">✓ <span data-i="yes"></span></td><td class="n">✗ <span data-i="no"></span></td></tr>
+<tr><td data-i="r3"></td><td class="y">✓ <span data-i="yes"></span></td><td class="n">✗ <span data-i="no"></span></td></tr>
+<tr><td data-i="r4"></td><td class="y">✓ <span data-i="yes"></span></td><td class="n">✗ <span data-i="no"></span></td></tr>
+<tr><td data-i="r5"></td><td class="y">✓ <span data-i="yes"></span></td><td class="n">✗ <span data-i="no"></span></td></tr>
+</table></div>
+<h2 class="sec" data-i="faqT"></h2>
+<details><summary data-i="f1q"></summary><p data-i="f1a"></p></details>
+<details><summary data-i="f2q"></summary><p data-i="f2a"></p></details>
+<details><summary data-i="f3q"></summary><p data-i="f3a"></p></details>
+<details><summary data-i="f4q"></summary><p data-i="f4a"></p></details>
+<div class="cta"><h2 data-i="ptT"></h2><p data-i="ptD"></p><button class="btn" id="pb" data-i="ptB"></button></div>
+</section>
+
+<section id="req" hidden><div class="panel">
+<h2 data-i="nReq"></h2><p class="sub" data-i="reqSub"></p>
+<form id="fReq">
+<div class="two"><div><label data-i="patient"></label><input name="p" required></div>
+<div><label data-i="group"></label><select name="g" id="gSel1"></select></div></div>
+<div class="two"><div><label data-i="units"></label><input name="u" type="number" min="1" max="10" value="1" required></div>
+<div><label data-i="urg"></label><select name="ur"><option value="6h" data-i="u6"></option><option value="today" data-i="uToday"></option><option value="week" data-i="uWeek"></option></select></div></div>
+<div><label data-i="hosp"></label><input name="h" required></div>
+<div><label data-i="phone"></label><input name="ph" type="tel" inputmode="tel" required></div>
+<p class="sub" data-i="reqNote"></p>
+<button class="btn" data-i="sendReq"></button>
+</form><div id="rMsg" aria-live="polite"></div></div>
+</section>
+
+<section id="reg" hidden><div class="panel">
+<h2 data-i="nReg"></h2><p class="sub" data-i="regSub"></p>
+<form id="fReg">
+<div><label data-i="name"></label><input name="n" required></div>
+<div><label data-i="phone"></label><input name="ph" type="tel" inputmode="tel" required></div>
+<div class="two"><div><label data-i="group"></label><select name="g" id="gSel2"></select></div>
+<div><label data-i="area"></label><select name="a" id="aSel"></select></div></div>
+<div><label data-i="last"></label><input name="d" type="date"></div>
+<label class="chk"><input type="checkbox" required><span data-i="consent"></span></label><br>
+<button class="btn" data-i="verify"></button>
+</form>
+<form id="fOtp" hidden><p class="msg" data-i="otpInfo"></p><p class="msg" id="demo" hidden></p>
+<div><label data-i="otp"></label><input name="c" inputmode="numeric" maxlength="4" required></div>
+<button class="btn" data-i="confirm"></button></form>
+<div id="gMsg" aria-live="polite"></div></div>
+</section>
+
+<section id="quiz" hidden><div class="panel"><h2 data-i="nQuiz"></h2><p class="sub" data-i="qSub"></p><form id="fQz"></form><div id="qRes" aria-live="polite"></div></div></section>
+
+<section id="banks" hidden><div class="panel wide">
+<h2 data-i="nBanks"></h2><p class="sub" data-i="banksSub"></p>
+<div class="tw"><table id="bt"></table></div></div>
+</section>
+</main>
+
+<dialog id="dlg"><form id="fAsk"><h3 data-i="ask"></h3><div><label data-i="name"></label><input name="n" required></div><div><label data-i="phone"></label><input name="ph" type="tel" inputmode="tel" required></div><p class="sub" data-i="askNote"></p><div id="aErr" aria-live="polite"></div><div class="two"><button class="btn" data-i="sendAsk"></button><button class="btn sec" type="button" id="cancel" data-i="cancel"></button></div></form></dialog>
+<dialog id="pdlg"><form id="fPar"><h3 data-i="ptT"></h3><div><label data-i="pOrg"></label><input name="o" required></div><div><label data-i="pName"></label><input name="n" required></div><div class="two"><div><label data-i="phone"></label><input name="ph" type="tel" inputmode="tel" required></div><div><label data-i="pMail"></label><input name="e" type="email"></div></div><div><label data-i="pNote"></label><input name="m" maxlength="500"></div><div id="pErr" aria-live="polite"></div><div class="two"><button class="btn" data-i="sendP"></button><button class="btn sec" type="button" id="pcancel" data-i="cancel"></button></div></form></dialog>
+<footer><div class="wrap"><p class="fl"><a href="privacy.html" data-i="priv"></a><a href="terms.html" data-i="terms"></a><a href="#" id="pl" data-i="contact"></a></p><span data-i="foot"></span></div></footer>
+
+<script src="demo-api.js"></script><script src="app.js"></script>
+</body>
+</html>
